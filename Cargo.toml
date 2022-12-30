@@ -1,7 +1,14 @@
 [package]
 name = "rengine"
-version = "0.1.0"
-edition = "2021"
+version = "0.0.0"
+edition = "2022"
+authors =["MuhammadMNorouzi muhammadmnorouzi@gmail.com"]
+rust-version = "1.66"
+description = "A simple game-engine for fun"
+readme = "README.md"
+repository = "https://github.com/muhammadmnorouzi/rengine"
+keywords = ["gamedev" , "game"]
+
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
