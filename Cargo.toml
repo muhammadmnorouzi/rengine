@@ -2,6 +2,7 @@
 name = "rengine"
 version = "0.0.0"
 edition = "2021"
+license = "MIT"
 authors =["MuhammadMNorouzi muhammadmnorouzi@gmail.com"]
 rust-version = "1.66"
 description = "A simple game-engine for fun"
