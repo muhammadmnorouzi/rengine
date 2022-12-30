@@ -1,3 +1,7 @@
-fn main(){
-    println!("sample is here");
+use rengine::engine::game::{Game , GameResult };
+
+fn main() -> GameResult {
+    Game::build().run()?;
+
+    Ok(())
 }
