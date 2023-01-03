@@ -1,6 +1,6 @@
 use super::{GameLogic, GameResult, GameSettings};
 use crate::utilities::Logger;
-use sdl2::{pixels::Color, render::WindowCanvas, EventPump, Sdl, VideoSubsystem};
+use sdl2::{render::WindowCanvas, EventPump, Sdl, VideoSubsystem};
 use std::{thread, time::Duration};
 
 pub struct Game<'a> {

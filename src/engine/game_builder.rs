@@ -1,5 +1,4 @@
 use super::{game::Game, game_builder_settings::GameBuilderSettings};
-use sdl2::pixels::Color;
 use sdl2::Sdl;
 
 pub struct GameBuilder<'a> {
@@ -22,7 +21,7 @@ impl<'a> GameBuilder<'a> {
             .build()
             .map_err(|e| e.to_string())?;
 
-        let mut canvas = window.into_canvas().build().map_err(|e| e.to_string())?;
+        let canvas = window.into_canvas().build().map_err(|e| e.to_string())?;
         let event_pump = context.event_pump()?;
 
         let game: Game = Game::new(
