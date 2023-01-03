@@ -7,9 +7,11 @@ use rengine::utilities::Logger;
 use std::time::Instant;
 
 const FPS: u32 = 30;
+const WIDTH: u32 = 800;
+const HEIGHT: u32 = 600;
 
 fn main() -> GameResult {
-    let window_settings = WindowSettings::new("RENGINE", 800, 600);
+    let window_settings = WindowSettings::new("RENGINE", WIDTH, HEIGHT);
     let game_settings = GameSettings::new(FPS);
     let game_builder_settings = GameBuilderSettings::new(&window_settings, &game_settings);
     let mut game = GameBuilder::build(&game_builder_settings)?;
