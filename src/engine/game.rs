@@ -47,7 +47,7 @@ impl<'a> Game<'a> {
             self.canvas.clear();
             self.canvas.present();
 
-            logic.draw()?;
+            logic.draw(&mut self.canvas)?;
             self.sleep();
         }
         logger.info("after loop ... ");
