@@ -23,11 +23,6 @@ impl<'a> GameBuilder<'a> {
             .map_err(|e| e.to_string())?;
 
         let mut canvas = window.into_canvas().build().map_err(|e| e.to_string())?;
-
-        canvas.set_draw_color(Color::RGB(255, 255, 255));
-        canvas.clear();
-        canvas.present();
-
         let event_pump = context.event_pump()?;
 
         let game: Game = Game::new(
