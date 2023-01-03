@@ -3,12 +3,13 @@ use rengine::engine::{
     WindowSettings,
 };
 use rengine::utilities::Logger;
+use rengine::sdl2::render::WindowCanvas;
 use std::time::Instant;
 
 fn main() -> GameResult {
 
     let window_settings = WindowSettings::new("RENGINE", 800, 600);
-    let game_settings = GameSettings::new(10u32);
+    let game_settings = GameSettings::new(1u32);
     // let game_settings = GameSettings::new(30u32);
 
     let game_builder_settings = GameBuilderSettings::new(&window_settings, &game_settings);
@@ -43,7 +44,7 @@ impl GameLogic for MyGame {
         Ok(())
     }
 
-    fn draw(&self) -> GameResult {
+    fn draw(&self , canvas : &mut WindowCanvas) -> GameResult {
         println!("drawing ... ");
 
         Ok(())
