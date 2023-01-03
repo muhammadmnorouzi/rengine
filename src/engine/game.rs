@@ -1,16 +1,7 @@
-use sdl2::event::Event;
-use sdl2::keyboard::Keycode;
-use sdl2::render::WindowCanvas;
-use sdl2::EventPump;
-use sdl2::Sdl;
-use sdl2::VideoSubsystem;
-use std::{
-    thread,
-    time::{Duration, Instant},
-};
-
-use super::game_settings::GameSettings;
-use super::types::GameResult;
+use sdl2::{render::WindowCanvas, EventPump, Sdl, VideoSubsystem};
+use std::{thread, time::Duration};
+use super::{GameLogic, GameResult, GameSettings};
+use crate::utilities::Logger;
 
 pub struct Game<'a> {
     settings: &'a GameSettings,
@@ -37,32 +28,34 @@ impl<'a> Game<'a> {
         }
     }
 
-    pub fn run(&mut self) -> GameResult {
-        let start_time = Instant::now();
+    pub fn run(&mut self, logic: &mut dyn GameLogic , logger : Logger) -> GameResult {
+        logger.info("before load ... ");
+        logic.load()?;
+        logger.info("after load ... ");
 
+        logger.info("before loop ... ");
         'main_loop: loop {
             for event in self.event_pump.poll_iter() {
-                match event {
-                    Event::Quit { .. }
-                    | Event::KeyDown {
-                        keycode: Some(Keycode::Escape),
-                        ..
-                    } => break 'main_loop,
-                    _ => {}
+                if let None = logic.on_event(event) {
+                    logger.info("Breaking loop .. ");
+                    break 'main_loop;
                 }
             }
 
-            println!("{:} ", start_time.elapsed().as_millis());
+            logic.update()?;
 
             self.canvas.clear();
             self.canvas.present();
 
+            logic.draw()?;
             self.sleep();
         }
+        logger.info("after loop ... ");
 
         return Ok(());
     }
 
+    // fps
     fn sleep(&self) {
         thread::sleep(Duration::new(0, 1_000_000_000u32 / self.settings.get_fps()));
     }

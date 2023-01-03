@@ -1,6 +1,4 @@
-use super::{
-    game::Game, game_builder_settings::GameBuilderSettings, window_settings::WindowSettings,
-};
+use super::{game::Game, game_builder_settings::GameBuilderSettings};
 use sdl2::pixels::Color;
 use sdl2::Sdl;
 
