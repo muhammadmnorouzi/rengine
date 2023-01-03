@@ -14,5 +14,4 @@ keywords = ["gamedev" , "game"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-env_logger = "0.10.0"
 sdl2 = "0.35.2"
