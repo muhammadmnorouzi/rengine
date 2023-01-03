@@ -1,7 +1,7 @@
-use sdl2::{render::WindowCanvas, EventPump, Sdl, VideoSubsystem};
-use std::{thread, time::Duration};
 use super::{GameLogic, GameResult, GameSettings};
 use crate::utilities::Logger;
+use sdl2::{pixels::Color, render::WindowCanvas, EventPump, Sdl, VideoSubsystem};
+use std::{thread, time::Duration};
 
 pub struct Game<'a> {
     settings: &'a GameSettings,
@@ -28,7 +28,7 @@ impl<'a> Game<'a> {
         }
     }
 
-    pub fn run(&mut self, logic: &mut dyn GameLogic , logger : Logger) -> GameResult {
+    pub fn run(&mut self, logic: &mut dyn GameLogic, logger: Logger) -> GameResult {
         logger.info("before load ... ");
         logic.load()?;
         logger.info("after load ... ");
@@ -43,13 +43,11 @@ impl<'a> Game<'a> {
             }
 
             logic.update()?;
-
-            self.canvas.clear();
-            self.canvas.present();
-
             logic.draw(&mut self.canvas)?;
+
             self.sleep();
         }
+
         logger.info("after loop ... ");
 
         return Ok(());
