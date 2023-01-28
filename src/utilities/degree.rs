@@ -4,6 +4,12 @@ pub struct Degree {
     value: f32
 }
 
+impl Degree {
+    pub fn value(&self) -> f32 {
+        self.value
+    }
+}
+
 impl Default for Degree {
     fn default() -> Self {
         Self { value: 0f32 }
