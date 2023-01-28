@@ -39,7 +39,7 @@ impl Vec2 {
     pub fn rotate(&self, d :Degree) -> Self {
         let (x , y) = self.get_xy();
         let (x , y) = (x as f32 , y as f32);
-        let d = d.value();
+        let d = d.as_radians();
         
         let xr = x * d.cos() - y * d.sin();
         let yr = y * d.cos() + x * d.sin();
